@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundos Especulativos - UNAH Campus Comayagua</title>
+    <style>
+        :root {
+            --unah-azul: #003366;
+            --unah-oro: #FFCC00;
+            --blanco: #ffffff;
+            --texto-oscuro: #1a1a1a;
+            --overlay: rgba(244, 247, 246, 0.96);
+            --sombra-pulida: 0 10px 20px -5px rgba(0, 51, 102, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+        body {
+            background: url('https://curc.unah.edu.hn/assets/assets/landing/header.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--overlay); z-index: -1;
+        }
+
+        .navbar {
+            background-color: var(--unah-azul); border-bottom: 5px solid var(--unah-oro);
+            padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+        }
+
+        .brand { display: flex; align-items: center; gap: 15px; }
+        .logo-unah { height: 50px; width: auto; background: white; padding: 4px; border-radius: 6px; }
+        .brand-text { color: white; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; line-height: 1.2; }
+        .class-badge { color: var(--unah-oro); font-weight: 400; display: block; font-size: 0.75rem; }
+
+        .navbar ul { display: flex; list-style: none; gap: 20px; }
+        .navbar ul li a { color: white; text-decoration: none; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+        .main-header { text-align: center; padding: 80px 20px 40px; }
+        .title-wrapper { display: flex; align-items: center; justify-content: center; gap: 25px; margin-bottom: 10px; flex-wrap: wrap; }
+        .main-header h2 { color: var(--unah-azul); font-size: clamp(2rem, 7vw, 4rem); text-transform: uppercase; font-weight: 900; line-height: 0.9; text-shadow: 3px 3px 0px var(--unah-oro); margin: 0; }
+        .header-png { height: clamp(90px, 18vw, 160px); width: auto; object-fit: contain; }
+        .main-header p { font-weight: 700; color: var(--unah-azul); font-size: clamp(0.9rem, 4vw, 1.3rem); letter-spacing: 2px; opacity: 0.9; width: 100%; }
+
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .main-section-title { color: var(--unah-azul); font-size: 2.5rem; text-align: center; margin: 40px 0 20px; text-transform: uppercase; letter-spacing: 3px; border-bottom: 4px solid var(--unah-oro); display: block; width: fit-content; margin-left: auto; margin-right: auto; }
+
+        .program-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--sombra-pulida); margin-bottom: 50px; }
+        .program-table th { background: var(--unah-azul); color: white; padding: 15px; text-align: left; }
+        .program-table td { padding: 12px 15px; border-bottom: 1px solid #eee; }
+        .phase-row { background: #f9f9f9; font-weight: bold; color: var(--unah-azul); }
+
+        .section { padding: 20px 0; margin-bottom: 30px; }
+        h1 { color: var(--unah-azul); font-size: 2rem; margin-bottom: 25px; border-left: 8px solid var(--unah-oro); padding-left: 15px; }
+        .topic-image { width: 100%; height: auto; border-radius: 20px; margin-bottom: 30px; box-shadow: var(--sombra-pulida); border: 5px solid white; }
+        
+        .summary-box { background: var(--blanco); padding: 30px; border-radius: 18px; margin-bottom: 30px; box-shadow: var(--sombra-pulida); text-align: justify; border: 1px solid rgba(0,0,0,0.05); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        .card { background: var(--blanco); padding: 25px; border-radius: 15px; border-top: 6px solid var(--unah-oro); box-shadow: var(--sombra-pulida); }
+        .card.blue-card { background: var(--unah-azul); color: #ffffff; border-top: 6px solid var(--unah-oro); }
+        .card h3 { color: var(--unah-azul); margin-bottom: 12px; font-size: 1.2rem; }
+        .card.blue-card h3 { color: var(--unah-oro); }
+
+        footer { background: #0a0a0a; color: #fff; padding: 60px 5% 40px; text-align: center; margin-top: 50px; border-top: 8px solid var(--unah-oro); }
+        .profesor-name { font-size: 1.4rem; color: var(--unah-oro); margin: 15px 0; font-weight: 800; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; padding: 1rem; }
+            .navbar ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZGZbjL4lmbzeuyVBAg8epspIXJH-8Vb0Y7A&s" alt="Logo UNAH" class="logo-unah">
+            <div class="brand-text">
+                UNAH CAMPUS COMAYAGUA
+                <span class="class-badge">FILOSOFÍA GENERAL 0900</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#programa">Programa</a></li>
+                <li><a href="#informacion">Información</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-header">
+        <div class="title-wrapper">
+            <h2>MUNDOS<br>ESPECULATIVOS</h2>
+            <img src="image-removebg-preview.png" alt="Logo" class="header-png">
+        </div>
+        <p>FACULTAD DE HUMANIDADES Y ARTES</p>
+        <p>FILOSOFÍA GENERAL 0900</p>
+
+    </div>
+
+    <main class="container">
+        
+        <h2 id="programa" class="main-section-title">Programa</h2>
+        <div class="summary-box">
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Actividad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="phase-row"><td colspan="2">Fase de Inicio</td></tr>
+                    <tr><td>09:10 AM - 09:14 AM</td><td>Bienvenida oficial</td></tr>
+                    <tr><td>09:16 AM - 09:22 AM</td><td>Introducción al tema central</td></tr>
+                    
+                    <tr class="phase-row"><td colspan="2">Bloque de Exposición</td></tr>
+                    <tr><td>09:24 AM - 09:44 AM</td><td>Pedagogía de Educación Sentipensante</td></tr>
+                    <tr><td>09:46 AM - 10:06 AM</td><td>Ciudades Inteligentes</td></tr>
+                    <tr><td>10:08 AM - 10:13 AM</td><td>Presentación de video</td></tr>
+                    <tr><td>10:15 AM - 10:35 AM</td><td>Crecer o sobrevivir</td></tr>
+                    <tr><td>10:37 AM - 10:57 AM</td><td>Sociedad Algorítmica</td></tr>
+                    
+                    <tr class="phase-row"><td colspan="2">Fase de Cierre</td></tr>
+                    <tr><td>10:59 AM - 11:39 AM</td><td>Plenaria</td></tr>
+                    <tr><td>11:41 AM - 11:45 AM</td><td>Conclusión</td></tr>
+                    <tr><td>11:47 AM - 12:02 PM</td><td>Refrigerio</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 id="informacion" class="main-section-title">Información</h2>
+
+        <section class="section">
+            <h1>Educación Sentipensante</h1>
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000" alt="Educación" class="topic-image">
+            <div class="summary-box">
+                <p>Se propone una transición hacia el modelo <strong>Sentipensante</strong> de <strong>Orlando Fals Borda</strong>, donde se busca superar la fragmentación entre la razón y el corazón. Este enfoque pedagógico plantea la formación de individuos íntegros capaces de utilizar el rigor científico sin desligarse de la sensibilidad humana y social.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Integración Cognitiva</h3>
+                    <p>Unificación de los procesos intelectuales con la inteligencia emocional en el aula.</p>
+                </div>
+                <div class="card">
+                    <h3>Impacto Social</h3>
+                    <p>Pedagogía orientada hacia la formación de sujetos activos comprometidos con su entorno.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>Ciudad Inteligente</h1>
+            <img src="https://images.unsplash.com/photo-1571333250630-f0230c320b6d?q=80&w=1000" alt="Ciudad" class="topic-image">
+            <div class="summary-box">
+                <p>Se propone una <strong>reconfiguración Ética para la ciudad de Comayagua</strong> ya que los problemas de la movilidad urbana en la actualidad causa segregación y contamina; nuestra propuesta busca democratizar el espacio público. No se trata solo de construir ciclovías, sino de aplicar una ética donde el derecho a la ciudad sea una extensión de la responsabilidad hacia las generaciones futuras y el medio ambiente, en línea con <strong>Henri Lefebvre</strong> en <em>El derecho a la ciudad</em>, quien plantea que los ciudadanos deben participar en la transformación de su ciudad.</p>
+            </div>
+            <div class="grid">
+                <div class="card blue-card">
+                    <h3>Movilidad Ética</h3>
+                    <p>Reconfiguración enfocada en reducir la segregación y la contaminación urbana en Comayagua.</p>
+                </div>
+                <div class="card">
+                    <h3>Derecho a la Ciudad</h3>
+                    <p>Participación ciudadana activa para transformar el entorno siguiendo la visión de Lefebvre.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>¿Crecer o Sobrevivir?</h1>
+            <img src="imagen1.jpeg" alt="Antes y Después" class="topic-image">
+            <div class="summary-box">
+                <p>Se analiza la crisis ecológica como consecuencia de una racionalidad económica que busca el crecimiento ilimitado. Basándose en <strong>Kohei Saito</strong>, se expone la incompatibilidad entre el capital y los límites biológicos del planeta, sugiriendo que la supervivencia depende de recuperar la gestión de los bienes comunes.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Límites Críticos</h3>
+                    <p>Contradicciones entre la acumulación de capital y la regeneración de los ecosistemas.</p>
+                </div>
+                <div class="card blue-card">
+                    <h3>Transición Justa</h3>
+                    <p>Reflexión sobre vías sociales compatibles con la biosfera y la supervivencia colectiva.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h1>La Sociedad Algorítmica</h1>
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000" alt="Algoritmos" class="topic-image">
+            <div class="summary-box">
+                <p>Se investiga el impacto de los sistemas automatizados en la desensibilización digital de la <strong>Generación Z</strong>. Se profundiza en el <strong>"Filtro Burbuja"</strong> de <strong>Eli Pariser</strong> y la apatía algorítmica que satura el juicio crítico.</p>
+            </div>
+            <div class="grid">
+                <div class="card blue-card">
+                    <h3>Filtros Invisibles</h3>
+                    <p>Cómo la mediación tecnológica distorsiona la percepción de la realidad social.</p>
+                </div>
+                <div class="card">
+                    <h3>Autonomía Ética</h3>
+                    <p>Fortalecimiento del juicio humano frente a la automatización del pensamiento y el Big Data.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h2>FILOSOFÍA GENERAL 0900</h2>
+            <p><strong>UNAH CAMPUS COMAYAGUA | I PAC 2026</strong></p>
+            <div class="profesor-name">Lic. Héctor Castellanos</div>
+            <p>Proyecto Final de Integración Crítica</p>
+        </div>
+        <div class="copyright">
+            © 2026 Universidad Nacional Autónoma de Honduras
+        </div>
+    </footer>
+
+</body>
+</html>
